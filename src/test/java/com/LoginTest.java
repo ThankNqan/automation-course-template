@@ -10,6 +10,7 @@ import com.utils.Utils;
 
 public class LoginTest extends BasicTest {
 
+
     @Test()
     public void loginTest() throws Exception {
         // Launch website
