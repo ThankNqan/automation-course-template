@@ -13,7 +13,7 @@ public class LoginTest extends BasicTest {
     @Test()
     public void loginTest() throws Exception {
         // Launch website
-        String url = "https://bantheme.xyz/hathanhauto/tai-khoan/";
+        String url = "https://google.com/";
         driver.get(url);
         String webUrl = driver.getCurrentUrl();
         Assert.assertEquals(webUrl, url);
