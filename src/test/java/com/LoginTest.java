@@ -27,7 +27,6 @@ public class LoginTest extends BasicTest {
         emailFieldLocator.sendKeys("ntthanhngan.2001@gmail.com");
         passwordFieldLocator.sendKeys("Thanhngan@123456");
         loginButtonLocator.click();
-        Utils.hardWait(5000);
 
         // Verify login button not displayed => login successfully
         Assert.assertFalse(loginButtonLocator.isDisplayed(), "Login Failed");
