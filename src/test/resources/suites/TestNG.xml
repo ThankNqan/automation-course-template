@@ -6,6 +6,9 @@
         <classes>
             <class name="com.Bai16_RegisterTest" />
             <class name="com.Bai16_LoginTest" />
+            <class name="com.Bonus_UpdateAccountTest" />
+            <class name="com.Bonus_AddItemIntoCardTest" />
+
 
         </classes>
     </test>
