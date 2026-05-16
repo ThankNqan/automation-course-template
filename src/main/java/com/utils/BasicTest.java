@@ -56,7 +56,6 @@ public abstract class BasicTest {
         loginPasswordFieldLocator.sendKeys(password);
         // Click login button
         loginButtonLocator.click();
-        Utils.hardWait(3000);
     }
 
     public WebElement getElementLocator(By locator) {
@@ -71,5 +70,10 @@ public abstract class BasicTest {
         WebElement element = driver.findElement(locator);
         element.clear();
         element.sendKeys(value);
+    }
+
+    public int parseNumberToInt(String numberString) {
+        String cleanNumber = numberString.replaceAll("[^\\d]", "");
+        return Integer.parseInt(cleanNumber);
     }
 }
