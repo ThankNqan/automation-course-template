@@ -39,11 +39,7 @@ public abstract class BasicTest {
         driver.quit();
     }
 
-    public void login(String username, String password) {// Launch website and navigate to
-                                                         // https://bantheme.xyz/hathanhauto/tai-khoan/
-        String url = "https://bantheme.xyz/hathanhauto/tai-khoan/";
-        driver.get(url);
-        Assert.assertEquals(driver.getCurrentUrl(), url);
+    public void login(String username, String password) {
 
         // Declare locator
         WebElement loginEmailFieldLocator = driver.findElement(By.id("username"));
@@ -56,6 +52,11 @@ public abstract class BasicTest {
         loginPasswordFieldLocator.sendKeys(password);
         // Click login button
         loginButtonLocator.click();
+
+        // Verify displaying Xin Chào after login successfully
+        WebElement contentTextLocator = driver.findElement(By.className("woocommerce-MyAccount-content"));
+        Assert.assertTrue(contentTextLocator.getText()
+                .contains("Xin chào"));
     }
 
     public WebElement getElementLocator(By locator) {

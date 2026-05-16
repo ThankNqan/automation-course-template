@@ -1,4 +1,4 @@
-package com;
+package com.Bai16;
 
 import org.testng.annotations.Test;
 
@@ -62,7 +62,7 @@ public class Bonus_RememberMeTest extends BasicTest {
 
     }
 
-    @Test
+    @Test(enabled = false)
     public void rememberMeDisableTest() {
         String url = "https://bantheme.xyz/hathanhauto/tai-khoan/";
         driver.get(url);

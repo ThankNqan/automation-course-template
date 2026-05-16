@@ -1,4 +1,4 @@
-package com;
+package com.Bai16;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -23,6 +23,7 @@ public class Bonus_UpdateAccountTest extends BasicTest {
     @Test()
     public void updateAccountSuccessfullyTest() throws Exception {
 
+        driver.get("https://bantheme.xyz/hathanhauto/tai-khoan/");
         login(emailLogin, passwordLogin);
 
         // Navigate to the Update account

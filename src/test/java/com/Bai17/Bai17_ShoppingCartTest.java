@@ -20,6 +20,7 @@ public class Bai17_ShoppingCartTest
     @Test()
     public void shoppingCartTest() {
         // Login to https://bantheme.xyz/hathanhauto/tai-khoan/
+        driver.get("https://bantheme.xyz/hathanhauto/tai-khoan/");
         login("ntthanhngan.2001@gmail.com", "Thanhngan@123456");
 
         // Search with keyword: "merc"

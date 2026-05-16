@@ -1,9 +1,8 @@
-package com;
+package com.Bai16;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import com.utils.BasicTest;
