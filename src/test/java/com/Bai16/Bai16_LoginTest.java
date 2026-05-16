@@ -39,7 +39,7 @@ public class Bai16_LoginTest extends BasicTest {
 
     }
 
-    @Test(enabled = false)
+    @Test()
     public void loginTestFailed() throws Exception {
         // Launch website and navigate to https://bantheme.xyz/hathanhauto/tai-khoan/
         String url = "https://bantheme.xyz/hathanhauto/tai-khoan/";

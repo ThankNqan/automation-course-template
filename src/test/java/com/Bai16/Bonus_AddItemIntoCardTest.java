@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.mongodb.util.Util;
 import com.utils.BasicTest;
 import com.utils.Utils;
 
@@ -33,6 +34,7 @@ public class Bonus_AddItemIntoCardTest
                 driver.findElement(By.name("add-to-cart")).click();
 
                 // Verify the product added to cart correctly
+                Utils.hardWait();
                 WebElement firtItemCartLocator = driver.findElement(By.cssSelector(".cart_item:nth-child(1)"));
                 String firstItemProductName = firtItemCartLocator.findElement(By.cssSelector(".product-name a"))
                                 .getText();
@@ -41,16 +43,7 @@ public class Bonus_AddItemIntoCardTest
                 // Login app
                 // Navigate to Tai Khoan
                 driver.findElement(By.className("pos-login")).click();
-                WebElement loginEmailFieldLocator = driver.findElement(By.id("username"));
-                WebElement loginPasswordFieldLocator = driver.findElement(By.id("password"));
-                WebElement loginButtonLocator = driver.findElement(By.cssSelector("button[name='login']"));
-
-                // Enter email address into email field
-                loginEmailFieldLocator.sendKeys("ntthanhngan.2001@gmail.com");
-                // Enter password into password field
-                loginPasswordFieldLocator.sendKeys("Thanhngan@123456");
-                // Click login button
-                loginButtonLocator.click();
+                login("ntthanhngan.2001@gmail.com", "Thanhngan@123456");
 
                 // Utils.hardWait(3000);
 

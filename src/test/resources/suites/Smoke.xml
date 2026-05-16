@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" parallel="tests" name="SmokeTest">
+    <test thread-count="1" parallel="classes" name="SmokeTest">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.Bai16.Bai16_RegisterTest">
+                <methods>
+                    <include name="registerTest"/>
+                </methods>
+            </class>
+            <class name="com.Bai16.Bai16_LoginTest">
+                <methods>
+                    <include name="loginTestSuccess"/>
+                </methods>
+            </class>
+            <class name="com.Bai16.Bonus_UpdateAccountTest">
+                <methods>
+                    <include name="updateAccountSuccessfullyTest"/>
+                </methods>
+            </class>
+            <class name="com.Bai16.Bonus_AddItemIntoCardTest">
+                <methods>
+                    <include name="addItemIntoCartSuccess"/>
+                </methods>
+            </class>
+            <class name="com.Bai16.Bonus_RememberMeTest">
+                <methods>
+                    <include name="rememberMeEnableTestSuccess"/>
+                </methods>
+            </class>
+            <class name="com.Bai17.Bai17_ShoppingCartTest">
+                <methods>
+                    <include name="shoppingCartTest"/>
+                </methods>
+            </class>
+            <class name="com.Bai18.Bai18_TabTest">
+                <methods>
+                    <include name="testTab"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite><!-- Suite -->

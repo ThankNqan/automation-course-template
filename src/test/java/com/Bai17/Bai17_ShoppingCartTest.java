@@ -25,7 +25,7 @@ public class Bai17_ShoppingCartTest
 
         // Search with keyword: "merc"
         setData(searchField, "merc");
-        Utils.hardWait();
+        Utils.hardWait(5000);
         // Navigate to the result: "Bơm nước xe"
         List<WebElement> resultOptions = driver.findElements(searchResult);
         if (resultOptions.isEmpty()) {
