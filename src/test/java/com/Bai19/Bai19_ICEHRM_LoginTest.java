@@ -7,11 +7,14 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.utils.BasicTest;
+import com.utils.ExcelUtils;
 
 public class Bai19_ICEHRM_LoginTest extends BasicTest {
 
+    ExcelUtils excel = new ExcelUtils("src/test/resources/data/", "TestDataBai19.xlsx");
+
     @Test(dataProvider = "testLoginData")
-    public void testDataFeed(String user, String pass, String expected) {
+    public void testDataFeed(String user, String pass, String expected, String testcaseId) {
         // Navigate to https://icehrm-open.gamonoid.com/login.php
         String url = "https://icehrm-open.gamonoid.com/login.php";
         driver.get(url);
@@ -25,22 +28,35 @@ public class Bai19_ICEHRM_LoginTest extends BasicTest {
         passwordFieldElement.sendKeys(pass);
         loginButtonElement.click();
 
-        String errorMessage = errorMessage();
-        if (errorMessage != "") {
-            Assert.assertEquals(errorMessage, expected);
+        String actualMessage = errorMessage();
+        if (actualMessage != "") {
+            Assert.assertEquals(actualMessage, expected);
+            excel.setCellData(actualMessage, 0, testcaseId, 5);
+            excel.setCellData("FAILED", 0, testcaseId, 6);
         } else {
             // Verify display home page
             Assert.assertTrue(driver.findElement(By.xpath("//a[contains(text(),'Home')]")).isDisplayed());
+            excel.setCellData("PASSED", 0, testcaseId, 6);
         }
 
     }
 
     @DataProvider(name = "testLoginData")
     public Object[][] testData() {
-        Object[][] data = {
-                { "admin", "admin", "" },
-                { "admin", "admin123", "Login failed" }
-        };
+
+        int totalRows = excel.getTotalRow(0);
+        Object[][] data = new Object[totalRows - 1][4];
+        for (int i = 1; i < totalRows; i++) {
+            String user = excel.getData(0, i, 2);
+            String pass = excel.getData(0, i, 3);
+            String expected = excel.getData(0, i, 4);
+            String testcaseId = excel.getData(0, i, 0);
+
+            data[i - 1][0] = user;
+            data[i - 1][1] = pass;
+            data[i - 1][2] = expected;
+            data[i - 1][3] = testcaseId;
+        }
         return data;
     }
 
