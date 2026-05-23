@@ -4,25 +4,28 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
-import io.github.bonigarcia.wdm.WebDriverManager;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public abstract class BasicTest {
 
     public static final Logger logger = LogManager.getLogger();
     protected static WebDriver driver;
+    protected WebDriverWait wait;
     // private String driverPath;
+    protected String baseUrl;
+    protected Actions action;
 
     @BeforeMethod
+    // @Parameters({ "baseURL" })
     public void preCondition() {
         // Chromedriver path
         // driverPath = "src/main/resources/WebDrivers/chromedriver.exe";
@@ -34,6 +37,8 @@ public abstract class BasicTest {
         // Maximize the browser
         driver.manage().window().maximize();
         // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        wait = new WebDriverWait(driver, 3);
+        action = new Actions(driver);
     }
 
     @AfterMethod
@@ -57,7 +62,8 @@ public abstract class BasicTest {
         loginButtonLocator.click();
 
         // Verify displaying Xin Chào after login successfully
-        WebElement contentTextLocator = driver.findElement(By.className("woocommerce-MyAccount-content"));
+        WebElement contentTextLocator = wait
+                .until(ExpectedConditions.presenceOfElementLocated(By.className("woocommerce-MyAccount-content")));
         Assert.assertTrue(contentTextLocator.getText()
                 .contains("Xin chào"));
     }
@@ -79,6 +85,10 @@ public abstract class BasicTest {
     public int parseNumberToInt(String numberString) {
         String cleanNumber = numberString.replaceAll("[^\\d]", "");
         return Integer.parseInt(cleanNumber);
+    }
+
+    public WebElement getElement(By locator) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     // @AfterSuite()

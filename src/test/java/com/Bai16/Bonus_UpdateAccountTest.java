@@ -2,6 +2,7 @@ package com.Bai16;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
@@ -29,7 +30,7 @@ public class Bonus_UpdateAccountTest extends BasicTest {
         // Navigate to the Update account
         navigateTo(accountLocator);
         // Navigate to the DisplayName field
-        originalDisplayName = getElementLocator(displayNameFieldLocator).getAttribute("value");
+        originalDisplayName = getElement(displayNameFieldLocator).getAttribute("value");
         String newDisplayName = originalDisplayName + "_updated";
         setData(displayNameFieldLocator, newDisplayName);
         // Navigate to the Email field
@@ -38,9 +39,9 @@ public class Bonus_UpdateAccountTest extends BasicTest {
         setData(emailAccountFieldLocator, newEmail);
         // Save the updates
         driver.findElement(By.name("save_account_details")).click();
-        Utils.hardWait();
         // Verify the success message
-        WebElement alertMessageLocator = driver.findElement(By.className("woocommerce-message"));
+        WebElement alertMessageLocator = wait
+                .until(ExpectedConditions.presenceOfElementLocated(By.className("woocommerce-message")));
         Assert.assertTrue(alertMessageLocator.getText().contains("Thông tin tài khoản đã được cập nhật"));
 
     }
@@ -52,7 +53,6 @@ public class Bonus_UpdateAccountTest extends BasicTest {
         setData(displayNameFieldLocator, originalDisplayName);
         setData(emailAccountFieldLocator, originalEmail);
         driver.findElement(By.name("save_account_details")).click();
-        Utils.hardWait();
     }
 
 }
