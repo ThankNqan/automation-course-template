@@ -1,10 +1,5 @@
 package com.Bai19;
 
-<<<<<<< HEAD
-import java.io.ObjectInputStream;
-
-=======
->>>>>>> main
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -18,15 +13,11 @@ public class Bai19_ICEHRM_LoginTest extends BasicTest {
 
     ExcelUtils excel = new ExcelUtils("src/test/resources/data/", "TestDataBai19.xlsx");
 
-<<<<<<< HEAD
-    @Test(dataProvider = "loginDataTest")
-=======
     @Test(dataProvider = "testLoginData")
->>>>>>> main
     public void testDataFeed(String user, String pass, String expected, String testcaseId) {
         // Navigate to https://icehrm-open.gamonoid.com/login.php
         String url = "https://icehrm-open.gamonoid.com/login.php";
-        driver.get(url);
+
         Assert.assertEquals(driver.getCurrentUrl(), url);
 
         WebElement usernameFieldElement = driver.findElement(By.id("username"));
@@ -79,27 +70,4 @@ public class Bai19_ICEHRM_LoginTest extends BasicTest {
         }
 
     }
-<<<<<<< HEAD
-
-    @DataProvider(name = "loginDataTest")
-    public Object[][] dataLoginTest() {
-        ExcelUtils excel = new ExcelUtils("D:\\automation-course-template\\src\\test\\resources\\data\\",
-                "TestDataBai19.xlsx");
-        int totalRows = excel.getTotalRow(0);
-        Object[][] data = new Object[totalRows - 1][4];
-        for (int i = 1; i < totalRows; i++) {
-            String username = excel.getData(0, i, 2);
-            String password = excel.getData(0, i, 3);
-            String expectedMessage = excel.getData(0, i, 4);
-            String testcaseId = excel.getData(0, i, 0);
-
-            data[i - 1][0] = username;
-            data[i - 1][1] = password;
-            data[i - 1][2] = expectedMessage;
-            data[i - 1][3] = testcaseId;
-        }
-        return data;
-    }
-=======
->>>>>>> main
 }

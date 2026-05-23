@@ -50,8 +50,6 @@ public abstract class BasicTest {
 
     public void login(String username, String password) {
 
-    public void login(String username, String password) {
-
         // Declare locator
         WebElement loginEmailFieldLocator = driver.findElement(By.id("username"));
         WebElement loginPasswordFieldLocator = driver.findElement(By.id("password"));
