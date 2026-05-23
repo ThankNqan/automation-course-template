@@ -1,7 +1,10 @@
 package com.Bai19;
 
+<<<<<<< HEAD
 import java.io.ObjectInputStream;
 
+=======
+>>>>>>> main
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -15,7 +18,11 @@ public class Bai19_ICEHRM_LoginTest extends BasicTest {
 
     ExcelUtils excel = new ExcelUtils("src/test/resources/data/", "TestDataBai19.xlsx");
 
+<<<<<<< HEAD
     @Test(dataProvider = "loginDataTest")
+=======
+    @Test(dataProvider = "testLoginData")
+>>>>>>> main
     public void testDataFeed(String user, String pass, String expected, String testcaseId) {
         // Navigate to https://icehrm-open.gamonoid.com/login.php
         String url = "https://icehrm-open.gamonoid.com/login.php";
@@ -72,6 +79,7 @@ public class Bai19_ICEHRM_LoginTest extends BasicTest {
         }
 
     }
+<<<<<<< HEAD
 
     @DataProvider(name = "loginDataTest")
     public Object[][] dataLoginTest() {
@@ -92,4 +100,6 @@ public class Bai19_ICEHRM_LoginTest extends BasicTest {
         }
         return data;
     }
+=======
+>>>>>>> main
 }
