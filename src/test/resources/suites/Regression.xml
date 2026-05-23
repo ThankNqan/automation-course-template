@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" parallel="tests" name="RegressionTest">
+    <test thread-count="1" parallel="classes" name="RegressionTest">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.Bai16.Bai16_RegisterTest" />
+            <class name="com.Bai16.Bai16_LoginTest" />
+            <class name="com.Bai16.Bonus_UpdateAccountTest" />
+            <class name="com.Bai16.Bonus_AddItemIntoCardTest" />
+            <class name="com.Bai16.Bonus_RememberMeTest" />
+            <class name="com.Bai17.Bai17_ShoppingCartTest" />
+            <class name="com.Bai18.Bai18_TabTest" />
+
+
+
+
+
+        </classes>
+    </test>
+</suite><!-- Suite -->

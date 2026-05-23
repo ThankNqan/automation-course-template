@@ -9,8 +9,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import io.github.bonigarcia.wdm.WebDriverManager;
+
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public abstract class BasicTest {
@@ -39,11 +42,7 @@ public abstract class BasicTest {
         driver.quit();
     }
 
-    public void login(String username, String password) {// Launch website and navigate to
-                                                         // https://bantheme.xyz/hathanhauto/tai-khoan/
-        String url = "https://bantheme.xyz/hathanhauto/tai-khoan/";
-        driver.get(url);
-        Assert.assertEquals(driver.getCurrentUrl(), url);
+    public void login(String username, String password) {
 
         // Declare locator
         WebElement loginEmailFieldLocator = driver.findElement(By.id("username"));
@@ -56,7 +55,11 @@ public abstract class BasicTest {
         loginPasswordFieldLocator.sendKeys(password);
         // Click login button
         loginButtonLocator.click();
-        Utils.hardWait(3000);
+
+        // Verify displaying Xin Chào after login successfully
+        WebElement contentTextLocator = driver.findElement(By.className("woocommerce-MyAccount-content"));
+        Assert.assertTrue(contentTextLocator.getText()
+                .contains("Xin chào"));
     }
 
     public WebElement getElementLocator(By locator) {
@@ -72,4 +75,28 @@ public abstract class BasicTest {
         element.clear();
         element.sendKeys(value);
     }
+
+    public int parseNumberToInt(String numberString) {
+        String cleanNumber = numberString.replaceAll("[^\\d]", "");
+        return Integer.parseInt(cleanNumber);
+    }
+
+    // @AfterSuite()
+    // public void resetCartList() {
+    // driver.get("https://bantheme.xyz/hathanhauto/tai-khoan");
+    // login("ntthanhngan.2001@gmail.com", "Thanhngan@123456");
+    // driver.findElement(By.cssSelector(".header-main a[title*='Giỏ
+    // hàng']")).click();
+    // // On the Cart page
+    // List<WebElement> cartList =
+    // driver.findElements(By.cssSelector(".cart_item"));
+    // for (WebElement item : cartList) {
+    // item.findElement(By.cssSelector(".remove")).click();
+    // Utils.hardWait();
+    // }
+    // WebElement emptyCartMessage = driver.findElement(By.cssSelector("cart-empty
+    // woocommerce-info"));
+    // Assert.assertTrue(emptyCartMessage.isDisplayed());
+
+    // }
 }

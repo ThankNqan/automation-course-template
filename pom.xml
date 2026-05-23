@@ -1,5 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.sat</groupId>
     <artifactId>selenium-webdriver-java-course</artifactId>
@@ -102,13 +102,13 @@
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
         </dependency>
-<!--        todo update extentreports to new release      -->
+        <!--        todo update extentreports to new release      -->
         <dependency>
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
             <version>${extentreports.version}</version>
         </dependency>
-<!--        todo update extentreports-testng-adapter to new release      -->
+        <!--        todo update extentreports-testng-adapter to new release      -->
         <dependency>
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports-testng-adapter</artifactId>
@@ -122,8 +122,8 @@
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-          <!--  <version>${webdrivermanager.version}</version> -->
-			<version>5.5.3</version>
+            <!--  <version>${webdrivermanager.version}</version> -->
+            <version>5.5.3</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -191,10 +191,15 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-         <groupId>org.junit.jupiter</groupId>
-         <artifactId>junit-jupiter</artifactId>
-         <version>5.8.2</version>
-         <scope>test</scope>
-     </dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.8.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.microsoft.playwright</groupId>
+            <artifactId>playwright</artifactId>
+            <version>1.44.0</version>
+        </dependency>
     </dependencies>
 </project>
