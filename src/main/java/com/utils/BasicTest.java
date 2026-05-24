@@ -8,6 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -131,6 +132,18 @@ public abstract class BasicTest {
 
     public String getTextByValueAttribute(By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).getAttribute("value");
+    }
+
+    public String getFilePath(String path) {
+        String absolutePath = new File(path).getAbsolutePath();
+        File file = new File(absolutePath);
+        if (file.exists()) {
+            return absolutePath;
+        } else {
+            Assert.fail("File does not exist: " + absolutePath);
+            return null;
+        }
+
     }
 
     // @AfterSuite()
