@@ -98,6 +98,16 @@ public abstract class BasicTest {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
+    public WebElement getPresenceElement(By locator) {
+        try {
+            return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        } catch (Exception e) {
+            Assert.fail("Invalid locator: " + locator);
+            return null;
+        }
+
+    }
+
     public List<WebElement> getElementsList(By locator) {
         List<WebElement> list;
         try {
