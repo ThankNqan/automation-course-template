@@ -1,7 +1,5 @@
 package com.Bai21;
 
-import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -36,7 +34,6 @@ public class Bai21_BreadcrumbTest extends BasicTest {
         action.click(selectedItemElement).perform();
 
         String breadcrumbsText = getTextByElement(breadCrumLocator);
-        breadcrumbsText = breadcrumbsText.substring(0, 4);
         Assert.assertTrue(breadcrumbsText.contains(expectedBreadCrumText),
                 "The breadcrumb does not reflect the correct path. " +
                         "\nActual: " + breadcrumbsText +

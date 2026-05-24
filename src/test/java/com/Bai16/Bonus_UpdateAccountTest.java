@@ -39,7 +39,7 @@ public class Bonus_UpdateAccountTest extends BasicTest {
         driver.findElement(By.name("save_account_details")).click();
         // Verify the success message
         WebElement alertMessageLocator = wait
-                .until(ExpectedConditions.presenceOfElementLocated(By.className("woocommerce-message")));
+                .until(ExpectedConditions.visibilityOfElementLocated(By.className("woocommerce-message")));
         Assert.assertTrue(alertMessageLocator.getText().contains("Thông tin tài khoản đã được cập nhật"));
 
     }

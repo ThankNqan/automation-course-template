@@ -5,10 +5,10 @@ import java.util.List;
 import org.testng.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 
 import com.utils.BasicTest;
-import com.utils.Utils;
 
 public class Bai17_ShoppingCartTest
         extends BasicTest {
@@ -25,9 +25,9 @@ public class Bai17_ShoppingCartTest
 
         // Search with keyword: "merc"
         setData(searchField, "merc");
-        Utils.hardWait(5000);
         // Navigate to the result: "Bơm nước xe"
-        List<WebElement> resultOptions = driver.findElements(searchResult);
+        List<WebElement> resultOptions = wait
+                .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(searchResult));
         if (resultOptions.isEmpty()) {
             Assert.fail("No search results found.");
         }

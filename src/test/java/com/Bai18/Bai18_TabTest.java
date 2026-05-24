@@ -8,7 +8,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.utils.BasicTest;
-import com.utils.Utils;
 
 public class Bai18_TabTest extends BasicTest {
 
@@ -36,7 +35,5 @@ public class Bai18_TabTest extends BasicTest {
         WebElement contentTextLocator = driver.findElement(By.className("woocommerce-MyAccount-content"));
         Assert.assertTrue(contentTextLocator.getText()
                 .contains("Xin chào"));
-        Utils.hardWait();
-
     }
 }

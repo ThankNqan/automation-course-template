@@ -17,6 +17,7 @@ public class Bai19_ICEHRM_LoginTest extends BasicTest {
     public void testDataFeed(String user, String pass, String expected, String testcaseId) {
         // Navigate to https://icehrm-open.gamonoid.com/login.php
         String url = "https://icehrm-open.gamonoid.com/login.php";
+        driver.get(url);
 
         Assert.assertEquals(driver.getCurrentUrl(), url);
 
