@@ -7,6 +7,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
@@ -48,7 +52,9 @@ public abstract class BasicTest {
         driver.quit();
     }
 
-    public void login(String username, String password) {
+    public void login() {
+        String username = "ntthanhngan.2001@gmail.com";
+        String password = "Thanhngan@123456";
 
         // Declare locator
         WebElement loginEmailFieldLocator = driver.findElement(By.id("username"));
@@ -78,7 +84,7 @@ public abstract class BasicTest {
     }
 
     public void setData(By locator, String value) {
-        WebElement element = driver.findElement(locator);
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         element.clear();
         element.sendKeys(value);
     }
@@ -90,6 +96,31 @@ public abstract class BasicTest {
 
     public WebElement getElement(By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public List<WebElement> getElementsList(By locator) {
+        List<WebElement> list;
+        try {
+            list = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+        } catch (Exception e) {
+            Assert.fail("No search results found.");
+            return new ArrayList<>();
+        }
+        return list;
+
+    }
+
+    public void clickElement(By locator) {
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+        element.click();
+    }
+
+    public String getTextByElement(By locator) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).getText();
+    }
+
+    public String getTextByValueAttribute(By locator) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).getAttribute("value");
     }
 
     // @AfterSuite()

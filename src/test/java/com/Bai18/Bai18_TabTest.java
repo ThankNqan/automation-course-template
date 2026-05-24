@@ -15,12 +15,10 @@ public class Bai18_TabTest extends BasicTest {
     @Test
     public void testTab() {
 
-        String username = "ntthanhngan.2001@gmail.com";
-        String password = "Thanhngan@123456";
         // login to the https://bantheme.xyz/hathanhauto/tai-khoan/
         driver.get("https://bantheme.xyz/hathanhauto/tai-khoan/");
 
-        login(username, password);
+        login();
 
         ((JavascriptExecutor) driver).executeScript("window.open()");
         ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());

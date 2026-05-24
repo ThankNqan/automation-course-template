@@ -43,7 +43,7 @@ public class Bonus_AddItemIntoCardTest
                 // Login app
                 // Navigate to Tai Khoan
                 driver.findElement(By.className("pos-login")).click();
-                login("ntthanhngan.2001@gmail.com", "Thanhngan@123456");
+                login();
 
                 // Utils.hardWait(3000);
 

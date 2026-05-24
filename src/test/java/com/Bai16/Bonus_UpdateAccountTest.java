@@ -12,8 +12,6 @@ import com.utils.Utils;
 
 public class Bonus_UpdateAccountTest extends BasicTest {
 
-    private String emailLogin = "ntthanhngan.2001@gmail.com";
-    private String passwordLogin = "Thanhngan@123456";
     private String originalEmail = "ntthanhngan.2001@gmail.com";
     private String originalDisplayName;
 
@@ -25,7 +23,7 @@ public class Bonus_UpdateAccountTest extends BasicTest {
     public void updateAccountSuccessfullyTest() throws Exception {
 
         driver.get("https://bantheme.xyz/hathanhauto/tai-khoan/");
-        login(emailLogin, passwordLogin);
+        login();
 
         // Navigate to the Update account
         navigateTo(accountLocator);
