@@ -15,8 +15,6 @@ public class Bai21_BonusPracticeWithActions extends BasicTest {
 
         By elementALocator = By.cssSelector("#column-a");
         By elementBLocator = By.cssSelector("#column-b");
-        By headerALocator = By.cssSelector("#column-a>header");
-        By headerBLocator = By.cssSelector("#column-b>header");
 
         driver.get(url);
         Assert.assertEquals(driver.getCurrentUrl(), url);
@@ -24,21 +22,13 @@ public class Bai21_BonusPracticeWithActions extends BasicTest {
         WebElement originFirstElement = getElement(elementALocator);
         WebElement originSecondElement = getElement(elementBLocator);
 
-        String originFirstHeader = getTextByElement(headerALocator);
-        String originSecondHeader = getTextByElement(headerBLocator);
-        System.out.println(originFirstHeader);
-        System.out.println(originSecondHeader);
+        String originFirstHeader = getTextByElement(elementALocator);
+        String originSecondHeader = getTextByElement(elementBLocator);
 
         action.dragAndDrop(originFirstElement, originSecondElement).perform();
 
-        WebElement finalFirstElement = getElement(elementALocator);
-        WebElement finalSecondElement = getElement(elementBLocator);
-
-        String finalFirstHeader = getTextByElement(headerALocator);
-        String finalSecondHeader = getTextByElement(headerBLocator);
-
-        System.out.println(finalFirstHeader);
-        System.out.println(finalSecondHeader);
+        String finalFirstHeader = getTextByElement(elementALocator);
+        String finalSecondHeader = getTextByElement(elementBLocator);
 
         Assert.assertEquals(originFirstHeader, finalSecondHeader);
         Assert.assertEquals(originSecondHeader, finalFirstHeader);
