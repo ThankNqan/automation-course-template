@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import com.utils.BasicTest;
-import com.utils.Utils;
 
 public class Bai21_BonusUploadFile extends BasicTest {
 
