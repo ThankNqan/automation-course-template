@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -34,7 +35,6 @@ public class Bonus_AddItemIntoCardTest
                 driver.findElement(By.name("add-to-cart")).click();
 
                 // Verify the product added to cart correctly
-                Utils.hardWait();
                 WebElement firtItemCartLocator = driver.findElement(By.cssSelector(".cart_item:nth-child(1)"));
                 String firstItemProductName = firtItemCartLocator.findElement(By.cssSelector(".product-name a"))
                                 .getText();
@@ -43,9 +43,7 @@ public class Bonus_AddItemIntoCardTest
                 // Login app
                 // Navigate to Tai Khoan
                 driver.findElement(By.className("pos-login")).click();
-                login("ntthanhngan.2001@gmail.com", "Thanhngan@123456");
-
-                // Utils.hardWait(3000);
+                login();
 
                 // // Verify displaying Xin Chào after login successfully
                 WebElement contentTextLocator = driver.findElement(By.className("woocommerce-MyAccount-content"));
@@ -65,8 +63,6 @@ public class Bonus_AddItemIntoCardTest
                         }
                 }
                 Assert.assertTrue(isExist, "Failed to add product to cart");
-                Utils.hardWait();
-
         }
 
 }

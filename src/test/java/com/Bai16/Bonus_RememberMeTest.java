@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 import com.utils.Utils;
@@ -35,10 +36,10 @@ public class Bonus_RememberMeTest extends BasicTest {
 
         // Click loginButtonLocator
         loginButtonLocator.click();
-        Utils.hardWait();
 
         // Verify login successfully
-        WebElement contentTextLocator = driver.findElement(By.className("woocommerce-MyAccount-content"));
+        WebElement contentTextLocator = wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.className("woocommerce-MyAccount-content")));
         Assert.assertTrue(contentTextLocator.getText().contains("Xin chào"));
 
         Set<Cookie> cookies = driver.manage().getCookies();
@@ -58,7 +59,6 @@ public class Bonus_RememberMeTest extends BasicTest {
         // Verify the broswer save the login session
         contentTextLocator = driver.findElement(By.className("woocommerce-MyAccount-content"));
         Assert.assertTrue(contentTextLocator.getText().contains("Xin chào"));
-        Utils.hardWait();
 
     }
 
@@ -83,10 +83,11 @@ public class Bonus_RememberMeTest extends BasicTest {
 
         // Click loginButtonLocator
         loginButtonLocator.click();
-        Utils.hardWait();
 
         // Verify login successfully
-        WebElement contentTextLocator = driver.findElement(By.className("woocommerce-MyAccount-content"));
+        WebElement contentTextLocator = wait.until(ExpectedConditions
+                .visibilityOfElementLocated(driver.findElement(By.className("woocommerce-MyAccount-content"))));
+        ;
         Assert.assertTrue(contentTextLocator.getText().contains("Xin chào"));
 
         Set<Cookie> cookies = driver.manage().getCookies();
@@ -106,7 +107,6 @@ public class Bonus_RememberMeTest extends BasicTest {
         // Verify the broswer save the login session
         contentTextLocator = driver.findElement(By.className("woocommerce-MyAccount-content"));
         Assert.assertFalse(contentTextLocator.getText().contains("Xin chào"));
-        Utils.hardWait();
 
     }
 }

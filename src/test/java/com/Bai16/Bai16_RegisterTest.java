@@ -1,14 +1,11 @@
 package com.Bai16;
 
-import java.lang.annotation.ElementType;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.utils.BasicTest;
-import com.utils.Utils;
 
 public class Bai16_RegisterTest extends BasicTest {
 
@@ -21,7 +18,6 @@ public class Bai16_RegisterTest extends BasicTest {
 
         // Declare locator
         WebElement registerEmailFieldLocator = driver.findElement(By.id("reg_email"));
-        WebElement passwordFieldLocator = driver.findElement(By.id("reg_password"));
         WebElement registerButtonLocator = driver.findElement(By.cssSelector("button[name='register']"));
 
         // Enter testtest@gmail.com into email field

@@ -30,7 +30,6 @@ public class LoginTest extends BasicTest {
 
         // Verify login button not displayed => login successfully
         Assert.assertFalse(loginButtonLocator.isDisplayed(), "Login Failed");
-        Utils.hardWait(5000);
 
     }
 
