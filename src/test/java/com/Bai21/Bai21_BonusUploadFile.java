@@ -13,7 +13,7 @@ public class Bai21_BonusUploadFile extends BasicTest {
     public void testUploadFileSuccess() {
         String url = "https://the-internet.herokuapp.com/upload";
 
-        String filePath = "src\\test\\resources\\data\\image\\";
+        String filePath = "src/test/resources/data/image/";
         String fileName = "googleicon.png";
         String absoluteFilePath = getFilePath(filePath + fileName);
 

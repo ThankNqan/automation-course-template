@@ -146,6 +146,17 @@ public abstract class BasicTest {
 
     }
 
+    public void perfomance(String menuText, String actionText) {
+        By selectedMenuLocator = By.xpath("//a[contains(text(),'" + menuText + "')]");
+        WebElement selectedMenuElement = getPresenceElement(selectedMenuLocator);
+        if (actionText.equals("hover"))
+            action.moveToElement(selectedMenuElement).perform();
+        else if (actionText.equals("click"))
+            action.click(selectedMenuElement).perform();
+        else
+            Assert.fail("Action is invalid");
+    }
+
     // @AfterSuite()
     // public void resetCartList() {
     // driver.get("https://bantheme.xyz/hathanhauto/tai-khoan");
