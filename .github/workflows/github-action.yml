@@ -34,7 +34,7 @@ jobs:
 
             - name: CI test
               run: mvn clean test -Dsuite=${{github.event.inputs.test_suite1}}
-            - uses: actions/upload-artifact@v3
+            - uses: actions/upload-artifact@v4
               with:
                   name: report-${{github.run_number}}
                   path: target/surefire-reports
