@@ -33,7 +33,7 @@ jobs:
               run: sudo apt-get update && sudo apt-get --only-upgrade install google-chrome-stable
 
             - name: CI test
-              run: mvn clean test -Dsuite=${{github.event.inputs.test_suite1}}
+              run: mvn clean test -Dtest=Bai16.Bai16_LoginTest
             - uses: actions/upload-artifact@v4
               with:
                   name: report-${{github.run_number}}
