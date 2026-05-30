@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -37,10 +38,15 @@ public abstract class BasicTest {
         // ChromeOptions options = new ChromeOptions();
         // System.setProperty("webdriver.chrome.driver", driverPath);
         // driver = new ChromeDriver(options);
+        ChromeOptions options = new ChromeOptions();
+        // options.addArguments("--headless");
+        options.addArguments("window-size=1920,1080");
+        options.addArguments("--no-sanbox");
+
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(options);
         // Maximize the browser
-        driver.manage().window().maximize();
+        // driver.manage().window().maximize();
         // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         wait = new WebDriverWait(driver, 3);
         action = new Actions(driver);
