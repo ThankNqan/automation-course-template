@@ -13,6 +13,8 @@ on:
                 description: "loginTest"
                 required: true
                 default: "Bai16.Bai16_LoginTest"
+    schedule:
+        - cron: "0 2 * * *"
 jobs:
     test-ci:
         name: Test CI
