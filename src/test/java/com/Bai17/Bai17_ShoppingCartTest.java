@@ -42,7 +42,8 @@ public class Bai17_ShoppingCartTest
         driver.findElement(By.cssSelector(".single_add_to_cart_button")).click();
 
         // On the Cart page
-        List<WebElement> cartList = driver.findElements(By.cssSelector(".cart_item"));
+        List<WebElement> cartList = wait
+                .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector(".cart_item")));
 
         boolean found = false;
         for (int i = 0; i < cartList.size(); i++) {

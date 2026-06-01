@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -161,4 +163,39 @@ public abstract class BasicTest {
         else
             Assert.fail("Action is invalid");
     }
+
+    public String addDaysToToday(int daysToAdd) {
+        LocalDate result = LocalDate.now().plusDays(daysToAdd);
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        return result.format(fmt);
+    }
+
+    public String addDays(String startDate, int daysToAdd) {
+        try {
+            DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            LocalDate date = LocalDate.parse(startDate, fmt);
+            return date.plusDays(daysToAdd).format(fmt);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public String extractDate(String date, String type) {
+        String extractedDate = "";
+        switch (type) {
+            case "day":
+                extractedDate = date.substring(0, 2).replaceFirst("^0", "");
+                break;
+            case "month":
+                extractedDate = date.substring(3, 5).replaceFirst("^0", "");
+                break;
+            case "year":
+                extractedDate = date.substring(date.length() - 4);
+                break;
+            default:
+                break;
+        }
+        return extractedDate;
+    }
+
 }
