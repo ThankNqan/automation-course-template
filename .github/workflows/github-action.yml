@@ -5,14 +5,15 @@ on:
             - "**"
     workflow_dispatch:
         inputs:
-            test_suite1:
-                description: "demo xyz"
+            test_suite:
+                description: "Run Regression Test"
                 required: true
-                default: "Smoke"
+                default: "Regression"
             test_script:
                 description: "loginTest"
                 required: true
-                default: "Bai16.Bai16_LoginTest"
+                default: "Bai22.Bai22_DatePickerTest"
+
 jobs:
     test-ci:
         name: Test CI
