@@ -5,10 +5,6 @@ on:
             - "**"
     workflow_dispatch:
         inputs:
-            # test_suite1:
-            #     description: "demo xyz"
-            #     required: true
-            #     default: "Regression"
             test_script:
                 description: "loginTest"
                 required: true
