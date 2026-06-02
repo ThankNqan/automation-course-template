@@ -164,22 +164,6 @@ public abstract class BasicTest {
             Assert.fail("Action is invalid");
     }
 
-    public String addDaysToToday(int daysToAdd) {
-        LocalDate result = LocalDate.now().plusDays(daysToAdd);
-        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        return result.format(fmt);
-    }
-
-    public String addDays(String startDate, int daysToAdd) {
-        try {
-            DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-            LocalDate date = LocalDate.parse(startDate, fmt);
-            return date.plusDays(daysToAdd).format(fmt);
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
     public String extractDate(String date, String type) {
         String extractedDate = "";
         switch (type) {

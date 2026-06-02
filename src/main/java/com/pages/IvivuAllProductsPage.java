@@ -1,6 +1,5 @@
 package com.pages;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -22,14 +21,25 @@ public class IvivuAllProductsPage extends BasePage {
         return getElements(productListLocator);
     }
 
-    public IvivuProductPage selectProduct(WebDriver driver) {
+    public boolean hasResults() {
+        return getProductList().size() > 0;
+    }
+
+    public IvivuProductPage selectProduct() {
 
         List<WebElement> productList = getProductList();
         // get the first choice
-        productList.get(0).findElement(By.xpath("//span[@class='pdv__hotel--name']")).click();
+        productList.get(0).findElement(By.xpath(".//span[@class='pdv__hotel--name']")).click();
 
-        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(tabs.get(1)); // Switch to the new tab
+        // wait for new window/tab and switch to it
+        String originalHandle = driver.getWindowHandle();
+        wait.until(d -> d.getWindowHandles().size() > 1);
+        for (String handle : driver.getWindowHandles()) {
+            if (!handle.equals(originalHandle)) {
+                driver.switchTo().window(handle);
+                break;
+            }
+        }
         productPage = new IvivuProductPage(driver);
         return productPage;
     }

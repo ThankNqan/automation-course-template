@@ -24,7 +24,7 @@ public class IvivuProductPage extends BasePage {
         return getText(productNameLocator);
     }
 
-    public void clickBooking() {
+    public IvivuBookingPage clickBooking() {
         // clickTo(orderButtonLocator);
         // List<WebElement> roomList = getRoomList();
         // roomList.get(0).findElement(By.xpath("//button[text()=' Yêu cầu đặt
@@ -32,13 +32,14 @@ public class IvivuProductPage extends BasePage {
         if (isVisible(detailComboLocator))
             clickTo(bookingButtonLocator);
 
+        return new IvivuBookingPage(driver);
     }
 
     public List<WebElement> getRoomList() {
         return getElements(roomList);
     }
 
-    public boolean isBookingFormDisplay() {
+    public boolean isBookingFormDisplayed() {
         return isVisible(formRequestLocator);
     }
 }

@@ -56,42 +56,24 @@ public class IvivuHomePage extends BasePage {
     }
 
     public String selectEndDate(String expectedEndDate) {
-        performAction(endDateFieldLocator, "doubleclick");
+        // performAction(endDateFieldLocator, "doubleclick");
         selectDate(expectedEndDate, endDateFieldLocator);
         String actualEndDate = getDate(endDateFieldLocator);
         return actualEndDate;
     }
 
-    // public void selectDurationTravel(String expectedStartDate, String
-    // expectedEndDate) {
-
-    // clickTo(startDateFieldLocator);
-
-    // selectDate(expectedStartDate, startDateFieldLocator);
-    // String actualStartDate = getDate(startDateFieldLocator);
-
-    // Assert.assertEquals(expectedStartDate, actualStartDate);
-
-    // performAction(endDateFieldLocator, "doubleclick");
-    // selectDate(expectedEndDate, endDateFieldLocator);
-    // String actualEndDate = getDate(endDateFieldLocator);
-
-    // Assert.assertEquals(expectedEndDate, actualEndDate);
-
-    // }
-
-    public IvivuAllProductsPage searchBooking(WebDriver driver) {
+    public IvivuAllProductsPage searchBooking() {
 
         clickTo(searchButtonLocator);
-        searchResultPage = new IvivuAllProductsPage(driver);
+        searchResultPage = new IvivuAllProductsPage(this.driver);
         return searchResultPage;
 
     }
 
     public void selectDate(String expectedDate, By dateFieldLocator) {
-        String expectedDay = this.extractDate(expectedDate, "day");
-        String expectedMonth = this.extractDate(expectedDate, "month");
-        String expectedYear = this.extractDate(expectedDate, "year");
+        String expectedDay = Utils.extractDate(expectedDate, "day");
+        String expectedMonth = Utils.extractDate(expectedDate, "month");
+        String expectedYear = Utils.extractDate(expectedDate, "year");
 
         String currentMonth = getCurrentMonth(datePickerLocator);
         String currentYear = getCurrentYear(datePickerLocator);

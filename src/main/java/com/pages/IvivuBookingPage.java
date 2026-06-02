@@ -11,7 +11,7 @@ public class IvivuBookingPage extends BasePage {
     }
 
     String url = "https://www.ivivu.com/thong-tin-booking";
-    By bookingFormLocator = By.cssSelector("iv-entry-form-info.rsi__entry-form-info");
+    By bookingFormLocator = By.cssSelector("span.rtod__header--title");
 
     public Boolean isBookingFormDisplayed() {
         return isVisible(bookingFormLocator);

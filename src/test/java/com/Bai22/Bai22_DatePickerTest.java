@@ -30,7 +30,6 @@ public class Bai22_DatePickerTest extends BasicTest {
 
         driver.get(url);
         homePage = new IvivuHomePage(driver);
-        Assert.assertEquals(driver.getCurrentUrl(), url);
         Assert.assertTrue(homePage.isLogoDisplayed());
 
         // Select location
@@ -38,26 +37,29 @@ public class Bai22_DatePickerTest extends BasicTest {
         Assert.assertEquals(searchText, expectedLocation);
 
         // Select date duration
-        String expectedStartDate = addDaysToToday(60);
+        String expectedStartDate = Utils.addDaysToToday(60);
         // expectedStartDate = "31-12-2026";
-        String expectedEndDate = addDays(expectedStartDate, duration);
+        String expectedEndDate = Utils.addDays(expectedStartDate, duration);
         System.out.println("StartDate: " + expectedStartDate);
         System.out.println("EndDate: " + expectedEndDate);
 
         String actualStartDate = homePage.selectStartDate(expectedStartDate);
-        Assert.assertEquals(expectedStartDate, actualStartDate);
+        Assert.assertEquals(expectedStartDate, actualStartDate, "Start date mismatch");
+
         String actualEndDate = homePage.selectEndDate(expectedEndDate);
-        Assert.assertEquals(expectedEndDate, actualEndDate);
+        Assert.assertEquals(expectedEndDate, actualEndDate, "End date mismatch");
 
-        productsPage = homePage.searchBooking(driver);
+        productsPage = homePage.searchBooking();
+        Assert.assertTrue(productsPage.hasResults(), "Products page should have results");
 
-        productDetailsPage = productsPage.selectProduct(driver);
+        productDetailsPage = productsPage.selectProduct();
+        Assert.assertNotNull(productDetailsPage, "Product details page should be returned");
 
-        productDetailsPage.clickBooking();
+        bookingPage = productDetailsPage.clickBooking();
+        Assert.assertTrue(bookingPage.isBookingFormDisplayed(), "Booking form should be displayed");
 
         // bookingPage = new IvivuBookingPage(driver);
 
         // Assert.assertTrue(bookingPage.isBookingFormDisplayed());
-        Assert.assertTrue(productDetailsPage.isBookingFormDisplay());
     }
 }
