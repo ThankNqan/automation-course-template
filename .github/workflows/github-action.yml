@@ -13,6 +13,8 @@ on:
                 description: "loginTest"
                 required: true
                 default: "Bai22.Bai22_DatePickerTest"
+    schedule:
+        - cron: "0 2 * * *"
 
 jobs:
     test-ci:
