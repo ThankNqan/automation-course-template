@@ -35,7 +35,7 @@ public class IvivuProductPage extends BasePage {
     }
 
     public List<WebElement> getRoomList() {
-        return findElements(roomList);
+        return getElements(roomList);
     }
 
     public boolean isBookingFormDisplay() {

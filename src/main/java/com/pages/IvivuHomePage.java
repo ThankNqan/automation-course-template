@@ -27,7 +27,8 @@ public class IvivuHomePage extends BasePage {
             .xpath("(//div[contains(@class,'ds__btn-item')])[1]");
     By endDateFieldLocator = By
             .xpath("(//div[contains(@class,'ds__btn-item')])[2]");
-    By datePickerLocator = By.xpath("//div[contains(@class,'no-previous-month')]");
+    By datePickerLocator = By
+            .xpath("//div[contains(@class,'container__months')]/div[contains(@class,'month-item')][1]");
 
     By nextMonthButtonLocator = By.xpath("(//button[@class='button-next-month'])[2]");
 
@@ -47,22 +48,37 @@ public class IvivuHomePage extends BasePage {
         return getSearchText;
     }
 
-    public void selectDurationTravel(String expectedStartDate, String expectedEndDate) {
-
+    public String selectStartDate(String expectedStartDate) {
         clickTo(startDateFieldLocator);
-
         selectDate(expectedStartDate, startDateFieldLocator);
         String actualStartDate = getDate(startDateFieldLocator);
+        return actualStartDate;
+    }
 
-        Assert.assertEquals(expectedStartDate, actualStartDate);
-
+    public String selectEndDate(String expectedEndDate) {
         performAction(endDateFieldLocator, "doubleclick");
         selectDate(expectedEndDate, endDateFieldLocator);
         String actualEndDate = getDate(endDateFieldLocator);
-
-        Assert.assertEquals(expectedEndDate, actualEndDate);
-
+        return actualEndDate;
     }
+
+    // public void selectDurationTravel(String expectedStartDate, String
+    // expectedEndDate) {
+
+    // clickTo(startDateFieldLocator);
+
+    // selectDate(expectedStartDate, startDateFieldLocator);
+    // String actualStartDate = getDate(startDateFieldLocator);
+
+    // Assert.assertEquals(expectedStartDate, actualStartDate);
+
+    // performAction(endDateFieldLocator, "doubleclick");
+    // selectDate(expectedEndDate, endDateFieldLocator);
+    // String actualEndDate = getDate(endDateFieldLocator);
+
+    // Assert.assertEquals(expectedEndDate, actualEndDate);
+
+    // }
 
     public IvivuAllProductsPage searchBooking(WebDriver driver) {
 

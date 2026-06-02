@@ -19,7 +19,7 @@ public class IvivuAllProductsPage extends BasePage {
     By productListLocator = By.xpath("//iv-product-view");
 
     public List<WebElement> getProductList() {
-        return findElements(productListLocator);
+        return getElements(productListLocator);
     }
 
     public IvivuProductPage selectProduct(WebDriver driver) {

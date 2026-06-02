@@ -38,13 +38,17 @@ public class Bai22_DatePickerTest extends BasicTest {
         Assert.assertEquals(searchText, expectedLocation);
 
         // Select date duration
-        String expectedStartDate = addDaysToToday(7);
+        String expectedStartDate = addDaysToToday(60);
         // expectedStartDate = "31-12-2026";
         String expectedEndDate = addDays(expectedStartDate, duration);
         System.out.println("StartDate: " + expectedStartDate);
         System.out.println("EndDate: " + expectedEndDate);
 
-        homePage.selectDurationTravel(expectedStartDate, expectedEndDate);
+        String actualStartDate = homePage.selectStartDate(expectedStartDate);
+        Assert.assertEquals(expectedStartDate, actualStartDate);
+        String actualEndDate = homePage.selectEndDate(expectedEndDate);
+        Assert.assertEquals(expectedEndDate, actualEndDate);
+
         productsPage = homePage.searchBooking(driver);
 
         productDetailsPage = productsPage.selectProduct(driver);

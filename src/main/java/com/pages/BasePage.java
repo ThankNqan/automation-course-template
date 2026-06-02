@@ -21,7 +21,7 @@ public class BasePage {
 
     protected BasePage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, 3);
+        this.wait = new WebDriverWait(driver, 10);
         this.action = new Actions(driver);
         PageFactory.initElements(this.driver, driver);
     }
@@ -64,11 +64,10 @@ public class BasePage {
         }
     }
 
-    public List<WebElement> findElements(By locator) {
+    public List<WebElement> getElements(By locator) {
         List<WebElement> list;
         try {
-            WebDriverWait tmpWait = new WebDriverWait(this.driver, 10);
-            list = tmpWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+            list = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
         } catch (Exception e) {
             Assert.fail("No search results found.");
             return new ArrayList<>();
