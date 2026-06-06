@@ -35,7 +35,8 @@ public class Bonus_AddItemIntoCardTest
                 driver.findElement(By.name("add-to-cart")).click();
 
                 // Verify the product added to cart correctly
-                WebElement firtItemCartLocator = driver.findElement(By.cssSelector(".cart_item:nth-child(1)"));
+                WebElement firtItemCartLocator = wait.until(ExpectedConditions
+                                .visibilityOfElementLocated(By.cssSelector(".cart_item:nth-child(1)")));
                 String firstItemProductName = firtItemCartLocator.findElement(By.cssSelector(".product-name a"))
                                 .getText();
                 Assert.assertTrue(firstItemProductName.contains(productName));

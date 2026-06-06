@@ -1,27 +1,65 @@
-// package com.Bai22;
+package com.Bai22;
 
-// import org.testng.Assert;
-// import org.testng.annotations.Test;
+import java.util.List;
 
-// import com.pages.HomePageIvivu;
-// import com.utils.BasicTest;
-// import com.utils.Utils;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
-// public class Bai22_DatePickerTest extends BasicTest {
+import com.pages.IvivuAllProductsPage;
+import com.pages.IvivuBookingPage;
+import com.pages.IvivuHomePage;
+import com.pages.IvivuProductPage;
+import com.utils.BasicTest;
+import com.utils.Utils;
 
-// HomePageIvivu homePage;
-// String url = "https://www.ivivu.com/";
-// String location = "Phú Quốc";
+public class Bai22_DatePickerTest extends BasicTest {
 
-// @Test()
-// public void datePickerTest() {
-// driver.get(url);
-// homePage = new HomePageIvivu(driver);
-// Assert.assertEquals(driver.getCurrentUrl(), url);
+    IvivuHomePage homePage;
+    IvivuAllProductsPage productsPage;
+    IvivuProductPage productDetailsPage;
+    IvivuBookingPage bookingPage;
 
-// homePage.bookingTravel(location);
-// Utils.hardWait(2000);
-// homePage.selectDate("22", "Tháng 6", "2026");
+    String url = "https://www.ivivu.com/";
+    String expectedLocation = "Phú Quốc";
 
-// }
-// }
+    int duration = 3;
+
+    @Test()
+    public void datePickerTest() {
+
+        driver.get(url);
+        homePage = new IvivuHomePage(driver);
+        Assert.assertTrue(homePage.isLogoDisplayed());
+
+        // Select location
+        String searchText = homePage.selectLocation(expectedLocation);
+        Assert.assertEquals(searchText, expectedLocation);
+
+        // Select date duration
+        String expectedStartDate = Utils.addDaysToToday(60);
+        // expectedStartDate = "31-12-2026";
+        String expectedEndDate = Utils.addDays(expectedStartDate, duration);
+        System.out.println("StartDate: " + expectedStartDate);
+        System.out.println("EndDate: " + expectedEndDate);
+
+        String actualStartDate = homePage.selectStartDate(expectedStartDate);
+        Assert.assertEquals(expectedStartDate, actualStartDate, "Start date mismatch");
+
+        String actualEndDate = homePage.selectEndDate(expectedEndDate);
+        Assert.assertEquals(expectedEndDate, actualEndDate, "End date mismatch");
+
+        productsPage = homePage.searchBooking();
+        Assert.assertTrue(productsPage.hasResults(), "Products page should have results");
+
+        productDetailsPage = productsPage.selectProduct();
+        Assert.assertNotNull(productDetailsPage, "Product details page should be returned");
+
+        bookingPage = productDetailsPage.clickBooking();
+        Assert.assertTrue(bookingPage.isBookingFormDisplayed(), "Booking form should be displayed");
+
+        // bookingPage = new IvivuBookingPage(driver);
+
+        // Assert.assertTrue(bookingPage.isBookingFormDisplayed());
+    }
+}

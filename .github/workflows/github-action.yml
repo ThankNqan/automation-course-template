@@ -1,16 +1,21 @@
 name: Test web
 on:
-    push:
-        branches:
-            - "**"
+    # push:
+    #     branches:
+    #         - "**"
     workflow_dispatch:
         inputs:
+            test_suite:
+                description: "Run Regression Test"
+                required: true
+                default: "Regression"
             test_script:
                 description: "loginTest"
                 required: true
-                default: "Bai16.Bai16_LoginTest"
+                default: "Bai22.Bai22_DatePickerTest"
     schedule:
         - cron: "0 2 * * *"
+
 jobs:
     test-ci:
         name: Test CI

@@ -14,6 +14,7 @@
             <class name="com.Bai19.Bai19_ICEHRM_LoginTest" />
             <class name="com.Bai20.Bai20_ShoppingCartTest" />
             <class name="com.Bai21.Bai21_BreadcrumbTest" />
+            <class name="com.Bai22.Bai22_DatePickerTest" />
         </classes>
     </test>
 </suite><!-- Suite -->

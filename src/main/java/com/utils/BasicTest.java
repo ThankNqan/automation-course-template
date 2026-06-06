@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +41,7 @@ public abstract class BasicTest {
         // System.setProperty("webdriver.chrome.driver", driverPath);
         // driver = new ChromeDriver(options);
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
+        // options.addArguments("--headless");
         options.addArguments("window-size=1920,1080");
         options.addArguments("--no-sanbox");
 
@@ -161,4 +163,23 @@ public abstract class BasicTest {
         else
             Assert.fail("Action is invalid");
     }
+
+    public String extractDate(String date, String type) {
+        String extractedDate = "";
+        switch (type) {
+            case "day":
+                extractedDate = date.substring(0, 2).replaceFirst("^0", "");
+                break;
+            case "month":
+                extractedDate = date.substring(3, 5).replaceFirst("^0", "");
+                break;
+            case "year":
+                extractedDate = date.substring(date.length() - 4);
+                break;
+            default:
+                break;
+        }
+        return extractedDate;
+    }
+
 }
