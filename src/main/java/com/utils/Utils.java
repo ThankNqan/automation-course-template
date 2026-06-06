@@ -3,11 +3,14 @@ package com.utils;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+<<<<<<< HEAD
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import io.cucumber.java.Scenario;
 
+=======
+>>>>>>> main
 public class Utils {
     public static void hardWait(int timeout) {
         try {
@@ -66,6 +69,7 @@ public class Utils {
             return dayStr + "-" + monthStr + "-" + yearStr;
         }
     }
+<<<<<<< HEAD
 
     public static void takeScrenshot(WebDriver driver, Scenario scenario, String fileName) {
 
@@ -84,4 +88,6 @@ public class Utils {
         String endDate = addDays(startDate, Integer.parseInt(numberAddToday));
         return endDate;
     }
+=======
+>>>>>>> main
 }

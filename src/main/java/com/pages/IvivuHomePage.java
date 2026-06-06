@@ -40,7 +40,11 @@ public class IvivuHomePage extends BasePage {
         return isVisible(logoLocator);
     }
 
+<<<<<<< HEAD
     public String selectDestination(String location) {
+=======
+    public String selectLocation(String location) {
+>>>>>>> main
         By selectedLocation = By.xpath("//span[text()='" + location + "']");
         clickTo(searchFieldLocator);
         clickTo(selectedLocation);
@@ -48,14 +52,22 @@ public class IvivuHomePage extends BasePage {
         return getSearchText;
     }
 
+<<<<<<< HEAD
     public String selectCheckinDate(String expectedStartDate) {
+=======
+    public String selectStartDate(String expectedStartDate) {
+>>>>>>> main
         clickTo(startDateFieldLocator);
         selectDate(expectedStartDate, startDateFieldLocator);
         String actualStartDate = getDate(startDateFieldLocator);
         return actualStartDate;
     }
 
+<<<<<<< HEAD
     public String selectCheckoutDate(String expectedEndDate) {
+=======
+    public String selectEndDate(String expectedEndDate) {
+>>>>>>> main
         // performAction(endDateFieldLocator, "doubleclick");
         selectDate(expectedEndDate, endDateFieldLocator);
         String actualEndDate = getDate(endDateFieldLocator);
