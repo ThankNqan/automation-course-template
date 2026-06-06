@@ -1,6 +1,5 @@
 name: Test web
 on:
-<<<<<<< HEAD
     push:
         branches:
             - "**"
@@ -9,11 +8,6 @@ on:
                 default: "Bai22.Bai22_DatePickerTest"
             env:
                 default: "staging"
-=======
-    # push:
-    #     branches:
-    #         - "**"
->>>>>>> main
     workflow_dispatch:
         inputs:
             test_suite:
