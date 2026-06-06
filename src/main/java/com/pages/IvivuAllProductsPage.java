@@ -21,11 +21,11 @@ public class IvivuAllProductsPage extends BasePage {
         return getElements(productListLocator);
     }
 
-    public boolean hasResults() {
+    public boolean isHotelListDisplayed() {
         return getProductList().size() > 0;
     }
 
-    public IvivuProductPage selectProduct() {
+    public IvivuProductPage selectHotel() {
 
         List<WebElement> productList = getProductList();
         // get the first choice

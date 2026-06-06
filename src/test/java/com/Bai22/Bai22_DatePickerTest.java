@@ -15,8 +15,8 @@ import com.utils.Utils;
 
 public class Bai22_DatePickerTest extends BasicTest {
 
-    IvivuHomePage homePage;
-    IvivuAllProductsPage productsPage;
+    IvivuHomePage homePage; 
+    IvivuAllProductsPage searchResultPage;
     IvivuProductPage productDetailsPage;
     IvivuBookingPage bookingPage;
 
@@ -33,7 +33,7 @@ public class Bai22_DatePickerTest extends BasicTest {
         Assert.assertTrue(homePage.isLogoDisplayed());
 
         // Select location
-        String searchText = homePage.selectLocation(expectedLocation);
+        String searchText = homePage.selectDestination(expectedLocation);
         Assert.assertEquals(searchText, expectedLocation);
 
         // Select date duration
@@ -43,19 +43,19 @@ public class Bai22_DatePickerTest extends BasicTest {
         System.out.println("StartDate: " + expectedStartDate);
         System.out.println("EndDate: " + expectedEndDate);
 
-        String actualStartDate = homePage.selectStartDate(expectedStartDate);
+        String actualStartDate = homePage.selectCheckinDate(expectedStartDate);
         Assert.assertEquals(expectedStartDate, actualStartDate, "Start date mismatch");
 
-        String actualEndDate = homePage.selectEndDate(expectedEndDate);
+        String actualEndDate = homePage.selectCheckoutDate(expectedEndDate);
         Assert.assertEquals(expectedEndDate, actualEndDate, "End date mismatch");
 
-        productsPage = homePage.searchBooking();
-        Assert.assertTrue(productsPage.hasResults(), "Products page should have results");
+        searchResultPage = homePage.searchBooking();
+        Assert.assertTrue(searchResultPage.isHotelListDisplayed(), "Products page should have results");
 
-        productDetailsPage = productsPage.selectProduct();
+        productDetailsPage = searchResultPage.selectHotel();
         Assert.assertNotNull(productDetailsPage, "Product details page should be returned");
 
-        bookingPage = productDetailsPage.clickBooking();
+        bookingPage = productDetailsPage.clickRequestBooking();
         Assert.assertTrue(bookingPage.isBookingFormDisplayed(), "Booking form should be displayed");
 
         // bookingPage = new IvivuBookingPage(driver);

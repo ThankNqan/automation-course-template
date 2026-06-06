@@ -24,7 +24,7 @@ public class IvivuProductPage extends BasePage {
         return getText(productNameLocator);
     }
 
-    public IvivuBookingPage clickBooking() {
+    public IvivuBookingPage clickRequestBooking() {
         // clickTo(orderButtonLocator);
         // List<WebElement> roomList = getRoomList();
         // roomList.get(0).findElement(By.xpath("//button[text()=' Yêu cầu đặt

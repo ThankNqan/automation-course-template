@@ -1,8 +1,13 @@
 name: Test web
 on:
-    # push:
-    #     branches:
-    #         - "**"
+    push:
+        branches:
+            - "**"
+        inputs:
+            test_script:
+                default: "Bai22.Bai22_DatePickerTest"
+            env:
+                default: "staging"
     workflow_dispatch:
         inputs:
             test_suite:
@@ -40,7 +45,7 @@ jobs:
               run: sudo apt-get update && sudo apt-get --only-upgrade install google-chrome-stable
 
             - name: CI test
-              run: mvn clean test -Dtest=${{github.event.inputs.test_script}}
+              run: mvn clean test -Denv=${{github.event.inputs.env}}
 
             - uses: actions/upload-artifact@v4
               with:
