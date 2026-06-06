@@ -15,51 +15,51 @@ import com.utils.Utils;
 
 public class Bai22_DatePickerTest extends BasicTest {
 
-    IvivuHomePage homePage;
-    IvivuAllProductsPage productsPage;
-    IvivuProductPage productDetailsPage;
-    IvivuBookingPage bookingPage;
+        IvivuHomePage homePage;
+        IvivuAllProductsPage searchResultPage;
+        IvivuProductPage productDetailsPage;
+        IvivuBookingPage bookingPage;
 
-    String url = "https://www.ivivu.com/";
-    String expectedLocation = "Phú Quốc";
+        String url = "https://www.ivivu.com/";
+        String expectedLocation = "Phú Quốc";
 
-    int duration = 3;
+        int duration = 3;
 
-    @Test()
-    public void datePickerTest() {
+        @Test()
+        public void datePickerTest() {
 
-        driver.get(url);
-        homePage = new IvivuHomePage(driver);
-        Assert.assertTrue(homePage.isLogoDisplayed());
+                driver.get(url);
+                homePage = new IvivuHomePage(driver);
+                Assert.assertTrue(homePage.isLogoDisplayed());
 
-        // Select location
-        String searchText = homePage.selectLocation(expectedLocation);
-        Assert.assertEquals(searchText, expectedLocation);
+                // Select location
+                String searchText = homePage.selectDestination(expectedLocation);
+                Assert.assertEquals(searchText, expectedLocation);
 
-        // Select date duration
-        String expectedStartDate = Utils.addDaysToToday(60);
-        // expectedStartDate = "31-12-2026";
-        String expectedEndDate = Utils.addDays(expectedStartDate, duration);
-        System.out.println("StartDate: " + expectedStartDate);
-        System.out.println("EndDate: " + expectedEndDate);
+                // Select date duration
+                String expectedStartDate = Utils.addDaysToToday(60);
+                // expectedStartDate = "31-12-2026";
+                String expectedEndDate = Utils.addDays(expectedStartDate, duration);
+                System.out.println("StartDate: " + expectedStartDate);
+                System.out.println("EndDate: " + expectedEndDate);
 
-        String actualStartDate = homePage.selectStartDate(expectedStartDate);
-        Assert.assertEquals(expectedStartDate, actualStartDate, "Start date mismatch");
+                String actualStartDate = homePage.selectCheckinDate(expectedStartDate);
+                Assert.assertEquals(expectedStartDate, actualStartDate, "Start date mismatch");
 
-        String actualEndDate = homePage.selectEndDate(expectedEndDate);
-        Assert.assertEquals(expectedEndDate, actualEndDate, "End date mismatch");
+                String actualEndDate = homePage.selectCheckoutDate(expectedEndDate);
+                Assert.assertEquals(expectedEndDate, actualEndDate, "End date mismatch");
 
-        productsPage = homePage.searchBooking();
-        Assert.assertTrue(productsPage.hasResults(), "Products page should have results");
+                searchResultPage = homePage.searchBooking();
+                Assert.assertTrue(searchResultPage.isHotelListDisplayed(), "Products page should have results");
 
-        productDetailsPage = productsPage.selectProduct();
-        Assert.assertNotNull(productDetailsPage, "Product details page should be returned");
+                productDetailsPage = searchResultPage.selectHotel();
+                Assert.assertNotNull(productDetailsPage, "Product details page should be returned");
 
-        bookingPage = productDetailsPage.clickBooking();
-        Assert.assertTrue(bookingPage.isBookingFormDisplayed(), "Booking form should be displayed");
+                bookingPage = productDetailsPage.clickRequestBooking();
+                Assert.assertTrue(bookingPage.isBookingFormDisplayed(), "Booking form should be displayed");
 
-        // bookingPage = new IvivuBookingPage(driver);
+                // bookingPage = new IvivuBookingPage(driver);
 
-        // Assert.assertTrue(bookingPage.isBookingFormDisplayed());
-    }
+                // Assert.assertTrue(bookingPage.isBookingFormDisplayed());
+        }
 }
